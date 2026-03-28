@@ -20,18 +20,7 @@ const Index = () => {
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-6">
       <FloatingHearts />
 
-      {/* Love counter */}
-      <AnimatePresence>
-        {started && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-8 text-sm tracking-[0.25em] text-muted-foreground uppercase"
-          >
-            {count} reason{count !== 1 ? "s" : ""} unlocked
-          </motion.p>
-        )}
-      </AnimatePresence>
+
 
       {/* Reason text */}
       <div className="relative flex min-h-[180px] max-w-xl items-center justify-center">
