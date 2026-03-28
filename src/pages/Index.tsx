@@ -5,7 +5,7 @@ import FloatingHearts from "@/components/FloatingHearts";
 
 const Index = () => {
   const [index, setIndex] = useState(-1);
-  const [count, setCount] = useState(0);
+  
 
   const reveal = useCallback(() => {
     setIndex((prev) => {
