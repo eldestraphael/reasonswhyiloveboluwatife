@@ -12,7 +12,6 @@ const Index = () => {
       const next = (prev + 1) % reasons.length;
       return next;
     });
-    setCount((c) => c + 1);
   }, []);
 
   const started = index >= 0;
