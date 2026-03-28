@@ -60,16 +60,6 @@ const Index = () => {
       >
         {started ? "Another reason" : "Show me why"}
       </motion.button>
-
-      {started && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mt-6 text-xs text-muted-foreground/60"
-        >
-          {index + 1} / {reasons.length}
-        </motion.p>
-      )}
     </div>
   );
 };
