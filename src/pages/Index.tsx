@@ -61,7 +61,6 @@ const Index = () => {
         {started ? "Another reason" : "Show me why"}
       </motion.button>
 
-      {/* Subtle index indicator */}
       {started && (
         <motion.p
           initial={{ opacity: 0 }}
