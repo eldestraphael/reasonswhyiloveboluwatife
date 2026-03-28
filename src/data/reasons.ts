@@ -21,4 +21,8 @@ export const reasons: string[] = [
   "Because your laughter is the one sound that makes everything feel like it's going to be okay.",
   "Because you are my home, my horizon, and my greatest 'yes.'",
   "Because even the staggering scale of Stephenson 2-18, the largest star in the universe, is a tiny, flickering candle compared to the infinite depth of how much I love you.",
+  "Because I love how your touch sends a jolt of electricity through my body.",
+  "Because I love the way our quick-witted banter always leads to us playing around.",
+  "Because I love that you are such a stunning, sexy woman.",
+  "Because I love how your beauty is entirely in a league of its own.",
 ];
