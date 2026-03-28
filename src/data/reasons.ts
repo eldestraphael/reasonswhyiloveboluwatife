@@ -9,7 +9,7 @@ export const reasons: string[] = [
   "Because I adore the beautiful mystery of your kindness, especially when you're trying so hard to pretend you're wicked.",
   "Because the way you care about small things reveals how deeply you love the big ones.",
   "Because falling asleep next to you feels like the world finally exhaling.",
-  "Because you turn even a rainy afternoon into a memory I want to keep.",
+  
   "Because you are the only person who can see through my silences and know exactly what I'm thinking.",
   "Because when I picture the future, you're in every single version of it.",
   "Because you make me want to be someone worth remembering.",
