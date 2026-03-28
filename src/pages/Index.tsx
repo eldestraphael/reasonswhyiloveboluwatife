@@ -1,16 +1,90 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { reasons } from "@/data/reasons";
+import FloatingHearts from "@/components/FloatingHearts";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [index, setIndex] = useState(-1);
+  const [count, setCount] = useState(0);
+
+  const reveal = useCallback(() => {
+    setIndex((prev) => {
+      const next = (prev + 1) % reasons.length;
+      return next;
+    });
+    setCount((c) => c + 1);
+  }, []);
+
+  const started = index >= 0;
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-6">
+      <FloatingHearts />
+
+      {/* Love counter */}
+      <AnimatePresence>
+        {started && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="absolute top-8 text-sm tracking-[0.25em] text-muted-foreground uppercase"
+          >
+            {count} reason{count !== 1 ? "s" : ""} unlocked
+          </motion.p>
+        )}
+      </AnimatePresence>
+
+      {/* Reason text */}
+      <div className="relative flex min-h-[180px] max-w-xl items-center justify-center">
+        <AnimatePresence mode="wait">
+          {started ? (
+            <motion.p
+              key={index}
+              initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="text-center font-serif text-xl leading-relaxed text-foreground sm:text-2xl md:text-3xl"
+            >
+              "{reasons[index]}"
+            </motion.p>
+          ) : (
+            <motion.p
+              key="prompt"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="text-center font-serif text-lg text-muted-foreground italic sm:text-xl"
+            >
+              Every love has its reasons. Shall we count ours?
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Button */}
+      <motion.button
+        onClick={reveal}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.97 }}
+        className="mt-12 rounded-full bg-primary px-10 py-4 text-sm font-medium tracking-[0.2em] text-primary-foreground uppercase transition-shadow hover:shadow-lg"
+      >
+        {started ? "Another reason" : "Show me why"}
+      </motion.button>
+
+      {/* Subtle index indicator */}
+      {started && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="mt-6 text-xs text-muted-foreground/60"
+        >
+          {index + 1} / {reasons.length}
+        </motion.p>
+      )}
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
