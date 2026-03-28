@@ -5,14 +5,13 @@ import FloatingHearts from "@/components/FloatingHearts";
 
 const Index = () => {
   const [index, setIndex] = useState(-1);
-  const [count, setCount] = useState(0);
+  
 
   const reveal = useCallback(() => {
     setIndex((prev) => {
       const next = (prev + 1) % reasons.length;
       return next;
     });
-    setCount((c) => c + 1);
   }, []);
 
   const started = index >= 0;
@@ -21,18 +20,7 @@ const Index = () => {
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-6">
       <FloatingHearts />
 
-      {/* Love counter */}
-      <AnimatePresence>
-        {started && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-8 text-sm tracking-[0.25em] text-muted-foreground uppercase"
-          >
-            {count} reason{count !== 1 ? "s" : ""} unlocked
-          </motion.p>
-        )}
-      </AnimatePresence>
+
 
       {/* Reason text */}
       <div className="relative flex min-h-[180px] max-w-xl items-center justify-center">
@@ -72,17 +60,6 @@ const Index = () => {
       >
         {started ? "Another reason" : "Show me why"}
       </motion.button>
-
-      {/* Subtle index indicator */}
-      {started && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mt-6 text-xs text-muted-foreground/60"
-        >
-          {index + 1} / {reasons.length}
-        </motion.p>
-      )}
     </div>
   );
 };
